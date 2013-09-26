@@ -29,10 +29,17 @@ void main(){
     vec3 origin = vec3(sin(iGlobalTime*0.01), 1.0, cos(iGlobalTime*0.01))*10.0+offset;
     vec3 lookAt = vec3(0.0, 0.0, 0.0)+offset;
     vec3 rd = rayDirection(origin, lookAt, p);
-    vec3 epsilon = vec3(0.001, 0.0, 0.0);
     vec3 t = origin;
     float d = 1.0;
-    for(int i = 0; i < 15; i++){
+    #ifdef GL_FRAGMENT_PRECISION_HIGH
+        const vec3 epsilon = vec3(0.001, 0.0, 0.0);
+        const int samples = 15;
+    #else
+        vec3 epsilon = vec3(0.01, 0.0, 0.0);
+        const int samples = 9;
+    #endif
+
+    for(int i = 0; i < samples; i++){
         if(abs(d) > 0.01){
             d = dist(t);
             t += rd*d;
