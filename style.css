@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+}
+header {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    padding: 8px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background: rgba(0,0,0,0.9);
+}
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+header h1 {
+    display: inline;
+}
+header > * {
+    margin-right: 8px;
+}
+#social, #social > * {
+    display: inline;
+}
+#social {
+}
